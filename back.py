@@ -2,12 +2,14 @@ import pandas as pd
 
 
 def get_games():
-    df =pd.read_csv('../input/board-games/bgg_dataset.csv',sep=';',encoding='utf8')
+    df =pd.read_csv('bgg_dataset.csv',sep=';',encoding='utf8')
 
     games = {}
     columns = df.columns
     for value in df.values:
         games[value[0]] = {columns[1]:value[1], columns[2]:value[2], columns[3]:value[3], columns[4]:value[4], columns[5]:value[5], columns[6]:value[6],columns[7]:value[7], columns[8]:value[8], columns[9]:value[9]}
+
+    return games
 
 # Função para calcular a distância de Manhattan
 def manhattan(game1, game2):
@@ -21,6 +23,7 @@ def manhattan(game1, game2):
 
 # Função para recomendar música com base nas preferências do usuário
 def recommend(game_name, games):
+    games = get_games()
     userProfile = games[game_name]
     distances = []
     for game in games:
