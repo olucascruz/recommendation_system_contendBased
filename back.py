@@ -3,7 +3,7 @@ import pandas as pd
 
 def get_games():
     df =pd.read_csv('bgg_dataset.csv',sep=';',encoding='utf8')
-
+    df = df.drop(['Mechanics', 'Domains', "ID"], axis=1)
     games = {}
     columns = df.columns
     for value in df.values:
@@ -15,6 +15,7 @@ def get_games():
 def manhattan(game1, game2):
     distance = 0
     total = 0
+
     for key in game1:
         if key in game2:
             distance += abs(game1[key] - game2[key])

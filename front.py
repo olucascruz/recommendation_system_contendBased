@@ -2,21 +2,21 @@ import streamlit as st
 from math import sqrt
 from back import *
 
-# Função para adicionar uma nova música à MyGames
+# Função para adicionar uma nova game à MyGames
 def adicionar_game_MyGames(MyGames, nome_game, userProfile):
     MyGames[nome_game] = userProfile
 
 # Streamlit frontend
 st.title("Jogos de tabuleiro")
 
-# Sidebar para escolher a música a ser adicionada à MyGames
+# Sidebar para escolher a game a ser adicionada à MyGames
 st.sidebar.title("Escolha um jogo")
 selected_game = st.sidebar.selectbox("Selecione um jogo:", list(get_games().keys()))
 
 # MyGames inicial
 MyGames = {}
 
-# Adiciona a música escolhida à MyGames
+# Adiciona a game escolhida à MyGames
 if st.sidebar.button("Escolher jogo"):
     adicionar_game_MyGames(MyGames, selected_game, get_games()[selected_game])
     st.sidebar.success(f"O jogo '{selected_game}' foi escolhido!")
