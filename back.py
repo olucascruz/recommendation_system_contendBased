@@ -1,8 +1,8 @@
 import pandas as pd
 
 def get_games():
-    df = pd.read_csv('bgg_dataset.csv', sep=';', encoding='utf8')
-    df = df.drop(['Mechanics', 'Domains', 'ID'], axis=1)
+    df = pd.read_csv('amostra_aleatoria.csv', sep=',', encoding='utf8')
+    # df = df.drop(['Mechanics', 'Domains', 'ID'], axis=1)
     games = {}
     columns = df.columns
     for value in df.values:

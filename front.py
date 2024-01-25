@@ -10,7 +10,7 @@ st.title("Jogos de Tabuleiro")
 
 # Sidebar para escolher um jogo a ser adicionado à MyGames
 st.sidebar.title("Escolha um jogo")
-selected_game = st.sidebar.selectbox("Selecione um jogo:", list(get_games().keys()))
+selected_game = st.sidebar.selectbox("Selecione um jogo:", list(get_games().keys())[0:15])
 
 # MyGames inicial
 MyGames = {}
@@ -27,7 +27,7 @@ if MyGames:
 
     # Obtém recomendações para o último jogo adicionado à MyGames
     ultima_game_adicionada = list(MyGames.keys())[-1]
-    recomendacoes = recommend(ultima_game_adicionada, get_games())
+    recomendacoes = recommend(ultima_game_adicionada, get_games())[0:5]
 
     st.subheader("Jogos Baseados no Jogo Escolhido:")
     for distancia, game in recomendacoes:
